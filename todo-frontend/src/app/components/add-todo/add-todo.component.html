@@ -1,0 +1,11 @@
+<form (keyup.enter)="onSubmit()">
+  <div class="form-control">
+    <input
+      type="text"
+      name="text"
+      [(ngModel)]="text"
+      id="text"
+      placeholder="Add Task & Press Enter" />
+    <input type="hidden" name="isDone" [(ngModel)]="isDone" id="done" />
+  </div>
+</form>

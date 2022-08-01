@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "text": "Learn how to use Vue.js",
+      "isDone": true
+    },
+    {
+      "id": 2,
+      "text": "Drink coffee",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "text": "vuejsexamples.com",
+      "isDone": false
+    }
+  ]
+}

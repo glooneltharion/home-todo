@@ -1,0 +1,29 @@
+.todo {
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .text:before {
+    margin-right: 7px;
+    content: '';
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    border: 3px solid black;
+  }
+}
+
+.done {
+  .text:before {
+    background: black;
+  }
+}
