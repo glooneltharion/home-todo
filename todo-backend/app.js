@@ -122,7 +122,7 @@ app.get('/api/todos/:id', (req, res) => {
   });
 });
 
-/*app.post('/api/todos', (req, res) => {
+app.post('/api/todos', (req, res) => {
   let todo = [req.body.text, req.body.isDone];
 
   //todos.push(todo);
@@ -132,9 +132,9 @@ app.get('/api/todos/:id', (req, res) => {
   let query = connection.query(sql, (err, result) => {
     if (err) throw err;
     console.log(result);
-    res.status(200).send(result);
+    res.status(200).send('task added');
   });
-});*/
+});
 
 app.delete('/api/todos/:id', (req, res) => {
   /*const todo = todos.find(t => t.id === parseInt(req.params.id));
