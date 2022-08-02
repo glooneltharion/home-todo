@@ -74,7 +74,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const todos = [
+/*const todos = [
   {
     id: 1,
     text: 'Learn how to use Vue.js',
@@ -90,7 +90,7 @@ const todos = [
     text: 'vuejsexamples.com',
     isDone: false,
   },
-];
+];*/
 
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -123,7 +123,7 @@ app.get('/api/todos/:id', (req, res) => {
 });
 
 app.post('/api/todos', (req, res) => {
-  let todo = [req.body.text, req.body.isDone];
+  //let todo = [req.body.text, req.body.isDone];
 
   //todos.push(todo);
   //res.send(todo);

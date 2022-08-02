@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Todo } from 'src/app/types/Todo';
 
 @Component({
@@ -8,6 +8,7 @@ import { Todo } from 'src/app/types/Todo';
 })
 export class AddTodoComponent implements OnInit {
   @Output() addTodo: EventEmitter<Todo> = new EventEmitter();
+  @Input() todos!: Todo[];
   text!: string;
   isDone: boolean = false;
 
@@ -25,6 +26,9 @@ export class AddTodoComponent implements OnInit {
       text: this.text,
       isDone: this.isDone,
     };
+
+    this.todos.push(newTodo);
+    console.log(this.todos);
 
     this.addTodo.emit(newTodo);
 

@@ -1,5 +1,5 @@
 import { TodosService } from '../../services/todos/todos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/types/Todo';
 
 @Component({
@@ -8,7 +8,7 @@ import { Todo } from 'src/app/types/Todo';
   styleUrls: ['./todos.component.scss'],
 })
 export class TodosComponent implements OnInit {
-  todos!: Todo[];
+  @Output() todos!: Todo[];
 
   constructor(private todosService: TodosService) {}
 
