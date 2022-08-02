@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TodosService {
-  private url = 'http://localhost:3000/todos';
+  private url = 'http://localhost:3000/api/todos';
 
   constructor(private http: HttpClient) {}
 
