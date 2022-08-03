@@ -92,10 +92,10 @@ app.use((req, res, next) => {
   },
 ];*/
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    message: 'hello world',
-  });
+app.use(express.static('public'));
+
+app.get('/', function (req, res) {
+  res.sendFile('index.html');
 });
 
 app.get('/api/todos', (req, res) => {
