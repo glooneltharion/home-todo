@@ -1,6 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/auth');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -60,12 +62,13 @@ app.get('/insertdata', (req, res) => {
 });
 
 app.use(express.json());
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'Origin,X-Requested-With,Content-Type,Accept'
+    'Origin,X-Requested-With,Content-Type,Accept, Authorization'
   );
   res.setHeader(
     'Access-Control-Allow-Methods',
@@ -74,25 +77,9 @@ app.use((req, res, next) => {
   next();
 });
 
-/*const todos = [
-  {
-    id: 1,
-    text: 'Learn how to use Vue.js',
-    isDone: true,
-  },
-  {
-    id: 2,
-    text: 'Drink coffee',
-    isDone: false,
-  },
-  {
-    id: 3,
-    text: 'vuejsexamples.com',
-    isDone: false,
-  },
-];*/
-
 app.use(express.static('public'));
+
+app.use('/auth', authRoutes);
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -108,12 +95,6 @@ app.get('/api/todos', (req, res) => {
 });
 
 app.get('/api/todos/:id', (req, res) => {
-  /*const todo = todos.find(t => t.id === parseInt(req.params.id));
-  if (!todo) {
-    res.status(404).send('Task not found!');
-  }
-  res.status(200).res.send(todo);*/
-
   let sql = `select * from todos where id = ${req.params.id}`;
   let query = connection.query(sql, (err, result) => {
     if (err) throw err;
@@ -123,11 +104,6 @@ app.get('/api/todos/:id', (req, res) => {
 });
 
 app.post('/api/todos', (req, res) => {
-  //let todo = [req.body.text, req.body.isDone];
-
-  //todos.push(todo);
-  //res.send(todo);
-
   let sql = `INSERT INTO todos (text, isDone) VALUES ('${req.body.text}', ${req.body.isDone})`;
   let query = connection.query(sql, (err, result) => {
     if (err) throw err;
@@ -137,14 +113,6 @@ app.post('/api/todos', (req, res) => {
 });
 
 app.delete('/api/todos/:id', (req, res) => {
-  /*const todo = todos.find(t => t.id === parseInt(req.params.id));
-  if (!todo) {
-    res.status(404).send('Task not found!');
-  }
-  const index = todos.indexOf(todo);
-  todos.splice(index, 1);
-  res.send(todo);*/
-
   let sql = `delete from todos where id = ${req.params.id}`;
   let query = connection.query(sql, (err, result) => {
     if (err) throw err;
@@ -154,13 +122,6 @@ app.delete('/api/todos/:id', (req, res) => {
 });
 
 app.put('/api/todos/:id', (req, res) => {
-  /*const todo = todos.find(t => t.id === parseInt(req.params.id));
-  if (!todo) {
-    res.status(404).send('Task not found!');
-  }
-  todo.isDone = req.body.isDone;
-  res.send(todo);*/
-
   let sql = `update todos set isDone = ${req.body.isDone} where id = ${req.params.id}`;
   let query = connection.query(sql, (err, result) => {
     if (err) throw err;
