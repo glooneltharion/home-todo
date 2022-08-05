@@ -42,26 +42,41 @@ cd todo-backend
 npm i
 ```
 
+### Configuration
+
+Open terminal and run:
+
+```console
+cp sample.env .env
+```
+
 ### MySQL
 
-At the backend folder in file app.js add your data and delete database: 
+Add your data at the backend folder in file .env:
+
+DB_HOST=
+DB_USER=
+DB_PASS=
+
+At the backend folder in file app.js delete databese for now:
 
 const connection = mysql.createConnection({
-  host: 'your_host',
-  user: 'your_username',
-  password: 'your_password',
+host: process.env.DB_HOST,
+user: process.env.DB_USER,
+password: process.env.DB_PASS,
+~~database: 'todo',~~
 });
 
-Navigate to `http://localhost:3000/` and click on Create DB, then add database: 
+Navigate to `http://localhost:3000/` and click on Create DB, then add database:
 
 const connection = mysql.createConnection({
-  host: 'your_host',
-  user: 'your_username',
-  password: 'your_password',
-  database: 'todo',
+host: process.env.DB_HOST,
+user: process.env.DB_USER,
+password: process.env.DB_PASS,
+database: 'todo',
 });
 
-Navigate to `http://localhost:3000/` and click on Create Table and Insert Data. 
+Navigate to `http://localhost:3000/` and click on Create Table and Insert Data.
 
 ## Prettier and Eslint
 
