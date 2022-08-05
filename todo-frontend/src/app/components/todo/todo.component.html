@@ -1,8 +1,10 @@
-<div [ngClass]="{ done: todo.isDone }" class="todo">
-  <h3 class="text" (click)="complete(todo)">
-    {{ todo.text }}
-  </h3>
-  <h3>
-    <fa-icon (click)="delete(todo)" [icon]="faTimes"></fa-icon>
-  </h3>
-</div>
+<ng-container *ngIf="todo">
+  <div [ngClass]="{ done: todo.isDone }" class="todo">
+    <h3 class="text" (click)="complete(todo)">
+      {{ todo.text }}
+    </h3>
+    <h3>
+      <fa-icon (click)="delete(todo)" [icon]="faTimes"></fa-icon>
+    </h3>
+  </div>
+</ng-container>
