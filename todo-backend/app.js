@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const app = express();
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
+const env = require('dotenv').config();
 
 const connection = mysql.createConnection({
   host: 'localhost',
